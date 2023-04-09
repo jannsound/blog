@@ -10,6 +10,13 @@ div {
   text-align: left;
   border-bottom: 1px solid grey;
 }
+.lise:hover {
+  background-color: lightgray;
+}
+
+.thumb_up {
+  padding-left: 70px;
+}
 
 .thumb {
   padding-left: 10px;

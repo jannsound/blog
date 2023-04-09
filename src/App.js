@@ -11,6 +11,7 @@ function App() {
   let [up, setUp] = useState([0, 0, 0]);
   let [down, setDown] = useState([0, 0, 0]);
   let [modal, setModal] = useState(false);
+  let [modalTitle, setModalTitle] = useState(0);
 
   let titleCopy = [...title];
 
@@ -24,16 +25,17 @@ function App() {
         return (
           <div className="list" key={i}>
             <h3
-              onClick={function () {
+              onClick={function (a) {
                 modal == true ? setModal(false) : setModal(true);
+                setModalTitle(i);
               }}
             >
-              {data}
+              {title[i]}
             </h3>
             <p>
               발행날자
               <span
-                className="thumb"
+                className="thumb_up"
                 onClick={function () {
                   let upCopy = [...up];
                   upCopy[i] += 1;
@@ -60,9 +62,9 @@ function App() {
           </div>
         );
       })}
-
-      <div></div>
-      {modal == true ? <Modal title={title} /> : null}
+      <div>
+        {modal == true ? <Modal title={title} modalTitle={modalTitle} /> : null}
+      </div>
     </div>
   );
 }
@@ -70,7 +72,7 @@ function App() {
 function Modal(props) {
   return (
     <div className="modal">
-      <h3>{props.title[0]}</h3>
+      <h3>{props.title[props.modalTitle]}</h3>
       <p>발행날자</p>
       <p>상세내용</p>
     </div>
