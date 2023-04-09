@@ -11,6 +11,10 @@ div {
   border-bottom: 1px solid grey;
 }
 
+.thumb {
+  padding-left: 10px;
+}
+
 .modal {
   margin-top: 20px;
   padding: 20px;
