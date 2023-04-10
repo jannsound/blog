@@ -7,13 +7,13 @@ function App() {
     "강남 우동 맛집",
     "파이썬 독학",
   ]);
+  let titleCopy = [...title];
 
   let [up, setUp] = useState([0, 0, 0]);
   let [down, setDown] = useState([0, 0, 0]);
   let [modal, setModal] = useState(false);
   let [modalTitle, setModalTitle] = useState(0);
-
-  let titleCopy = [...title];
+  let [입력값, set입력값] = useState("");
 
   return (
     <div className="App">
@@ -59,10 +59,33 @@ function App() {
               </span>
               {down[i]}
             </p>
+            <button
+              onClick={() => {
+                titleCopy[i - 1] = titleCopy.splice(i, 1);
+                setTitle(titleCopy);
+              }}
+            >
+              삭제
+            </button>
           </div>
         );
       })}
       <div>
+        <input
+          onChange={(e) => {
+            set입력값(e.target.value);
+          }}
+        />
+        <button
+          onClick={() => {
+            let titleCopy = [...title];
+            titleCopy = titleCopy.unshift(입력값);
+            setTitle(titleCopy);
+          }}
+        >
+          글발행
+        </button>
+
         {modal == true ? <Modal title={title} modalTitle={modalTitle} /> : null}
       </div>
     </div>
@@ -74,7 +97,7 @@ function Modal(props) {
     <div className="modal">
       <h3>{props.title[props.modalTitle]}</h3>
       <p>발행날자</p>
-      <p>상세내용</p>
+      <p>상세 내용</p>
     </div>
   );
 }
