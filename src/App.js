@@ -78,8 +78,7 @@ function App() {
         />
         <button
           onClick={() => {
-            let titleCopy = [...title];
-            titleCopy = titleCopy.unshift(입력값);
+            titleCopy.unshift(입력값);
             setTitle(titleCopy);
           }}
         >
