@@ -27,10 +27,13 @@ function App() {
           <div className="list" key={i}>
             <h3
               onClick={function (a) {
-                modal == true ? setModal(false) : setModal(true);
+                let target = a.currentTarget.outerText;
+                target.includes(title[modalTitle]) //비슷한 제목에서 원치않은 결과
+                  ? setModal(false)
+                  : setModal(true);
+                //modal == true ? setModal(!true) : setModal(true);
                 setModalTitle(i);
-                // let dateCopy = [...date];
-                // setDate(dateCopy.unshift(time));
+                console.log(title);
               }}
             >
               {title[i]}
